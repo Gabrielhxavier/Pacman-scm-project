@@ -1,0 +1,23 @@
+{
+	"name": "C Dev Container",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"customizations": {
+		"vscode": {
+			"settings": {
+				"terminal.integrated.defaultProfile.linux": "bash",
+				"C_Cpp.default.compilerPath": "/usr/bin/gcc",
+				"C_Cpp.default.cStandard": "c11",
+				"C_Cpp.default.intelliSenseMode": "linux-gcc-x64",
+				"files.eol": "\n"
+			},
+			"extensions": [
+				"ms-vscode.cpptools-extension-pack",
+				"ms-vscode.makefile-tools"
+			]
+		}
+	},
+	"postCreateCommand": "gcc --version && make --version",
+	"remoteUser": "developer"
+}
