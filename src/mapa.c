@@ -87,7 +87,7 @@ void liberamapa(MAPA* m){
 void lemapa(MAPA* m){
     FILE* f;                                    //  declarando o tipo da variável como file (ponteiro) para abrir o arquivo
     
-    f = fopen("mapa.txt","r");        
+    f = fopen("src/mapa.txt","r");         //  O diretório do txt deve ser mudado para executar na pasta build
     if (f==0){
         printf("erro.\n");
         exit(1);
