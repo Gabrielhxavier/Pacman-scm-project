@@ -21,8 +21,8 @@ SRC = $(wildcard $(SRC_DIR)/*.c)
 # Converte: src/nome.c → build/nome.o
 OBJ = $(SRC:$(SRC_DIR)/%.c=$(BUILD_DIR)/%.o)
 
-# Nome do executável final
-TARGET = $(BUILD_DIR)/pacman.exe
+# Nome do executável final (Linux NÃO usa .exe)
+TARGET = $(BUILD_DIR)/pacman
 
 
 # =============================
@@ -52,7 +52,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 #      LINKAGEM FINAL
 # =============================
 
-# Une todos os .o e gera o executável pacman.exe
+# Une todos os .o e gera o executável final
 $(TARGET): $(OBJ)
 	$(CC) $(OBJ) -o $(TARGET)
 
@@ -71,4 +71,3 @@ run: $(TARGET)
 
 clean:
 	rm -rf $(BUILD_DIR)/*.o $(TARGET)
-
