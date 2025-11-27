@@ -1,35 +1,29 @@
 name: CI - Build and Test Pacman
 
 on:
-  push:
-    branches: [ "*" ]
   pull_request:
-    branches: [ "*" ]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Baixar o repositório
       - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Instalar GCC e Make
       - name: Install GCC and Make
         run: |
           sudo apt-get update
           sudo apt-get install -y gcc make
 
-      # 3. Construir o projeto com o Makefile
       - name: Build Pacman
         run: |
           echo "Compilando com Makefile..."
           make
 
-      # 4. Executar testes Unity (se o diretório "tests/" existir)
-      
-      - name: Run Unity tests (if present)
+      - name: Run Unity tests
         run: |
           if [ -d tests ]; then
             echo "Pasta tests/ encontrada. Compilando runner..."
