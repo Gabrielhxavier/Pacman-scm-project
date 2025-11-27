@@ -26,14 +26,8 @@ jobs:
       - name: Run Unity tests
         run: |
           if [ -d tests ]; then
-            echo "Pasta tests/ encontrada. Compilando runner..."
-            if make test 2>/dev/null; then
-              echo "Executando make test..."
-            else
-              echo "make test não existe. Compilando manualmente..."
-              gcc tests/*.c src/*.c -Iinclude -o tests/test_runner
-              ./tests/test_runner
-            fi
+            echo "Pasta tests/ encontrada. Executando make test..."
+            make test
           else
             echo "Nenhum teste encontrado. Prosseguindo..."
           fi
