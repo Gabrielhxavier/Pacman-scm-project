@@ -11,23 +11,25 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Install GCC and Make
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gcc make
+      - name: Build Docker image
+        run: docker build -t pacman-ci -f .devcontainer/Dockerfile .
 
       - name: Build Pacman
         run: |
-          echo "Compilando com Makefile..."
-          make
+          docker run --rm \
+            -v $(pwd):/workspaces \
+            -w /workspaces \
+            pacman-ci \
+            bash -c "
+              echo 'Compilando projeto...';
+              make;
 
-      - name: Run Unity tests
-        run: |
-          if [ -d tests ]; then
-            echo "Pasta tests/ encontrada. Executando make test..."
-            make test
-          else
-            echo "Nenhum teste encontrado. Prosseguindo..."
-          fi
+              if [ -d tests ]; then
+                echo 'Executando testes...';
+                make test;
+              else
+                echo 'Nenhum teste encontrado.';
+              fi
+            "
