@@ -3,6 +3,7 @@
 #define BAIXO 's'
 #define CIMA 'w'
 
+#pragma once
 
 int acabou();
 void move(char direcao);

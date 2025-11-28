@@ -43,22 +43,26 @@ int ehpersonagem(MAPA* m, int x, int y, char personagem){
     }
 return 0;
 }
-
 int podeandarnomapa(MAPA* m, int x, int y, char personagem){
-    if (x >= m->linhas)
+
+    // 1. VERIFICA POSIÇÕES INVÁLIDAS (NEGATIVAS OU MAIORES QUE O MAPA)
+    if (x < 0 || x >= m->linhas) 
         return 0;
 
-    if (y >= m->colunas)
+    if (y < 0 || y >= m->colunas) 
         return 0;
 
-    if (ehparede(m,x,y))
+    // 2. SE FOR PAREDE → NÃO PODE ANDAR
+    if (ehparede(m, x, y))
         return 0;
 
-    if (ehpersonagem(m,x,y,personagem))
+    // 3. NÃO PODE ANDAR SOBRE O MESMO PERSONAGEM
+    if (ehpersonagem(m, x, y, personagem))
         return 0;
 
     return 1;
 }
+
 
 int encontraheroi(POSICAO* p, MAPA* m, char c){
     for (int i = 0; i < m->linhas; i++)
@@ -87,7 +91,7 @@ void liberamapa(MAPA* m){
 void lemapa(MAPA* m){
     FILE* f;                                    //  declarando o tipo da variável como file (ponteiro) para abrir o arquivo
     
-    f = fopen("src/mapa.txt","r");         //  O diretório do txt deve ser mudado para executar na pasta build
+    f = fopen("mapa.txt","r");        
     if (f==0){
         printf("erro.\n");
         exit(1);

@@ -4,6 +4,9 @@
 #define BORDAH '-'
 #define FANTASMA 'F'
 
+#ifndef MAPA_H
+#define MAPA_H
+
 struct mapa
 {
     char** matriz;
@@ -32,3 +35,6 @@ void copiamapa(MAPA* original, MAPA* copia);
 void andanomapafantasma(MAPA* m, int origemx, int origemy, int destinox, int destinoy, char heroi);
 int ehparede(MAPA* m, int x, int y);
 int ehpersonagem(MAPA* m, int x, int y, char personagem);
+
+
+#endif
