@@ -7,6 +7,9 @@
 
 
 MAPA m;
+
+
+
 POSICAO heroi;
 MAPA copia;
 
@@ -113,7 +116,7 @@ void move(char direcao){
     andanomapa(&m, &heroi.x, &heroi.y, &proximox, &proximoy, HEROI);
 
 }
-
+#ifndef TEST
 int main() {
 
     lemapa(&m);
@@ -141,3 +144,4 @@ int main() {
 
     return 0;  
 }
+#endif
