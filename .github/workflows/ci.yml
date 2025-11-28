@@ -19,6 +19,7 @@ jobs:
       - name: Build Pacman
         run: |
           docker run --rm \
+            --user root \
             -v $(pwd):/workspaces \
             -w /workspaces \
             pacman-ci \
