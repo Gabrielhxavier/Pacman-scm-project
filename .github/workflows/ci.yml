@@ -1,0 +1,36 @@
+name: CI - Build and Test Pacman
+
+on:
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t pacman-ci -f .devcontainer/Dockerfile .
+
+      - name: Build Pacman
+        run: |
+          docker run --rm \
+            --user root \
+            -v $(pwd):/workspaces \
+            -w /workspaces \
+            pacman-ci \
+            bash -c "
+              echo 'Compilando projeto...';
+              make;
+
+              if [ -d tests ]; then
+                echo 'Executando testes...';
+                make test;
+              else
+                echo 'Nenhum teste encontrado.';
+              fi
+            "
