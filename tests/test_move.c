@@ -2,10 +2,6 @@
 #include "../include/mapa.h"
 #include "../include/pecman.h"
 
-#include "unity.h"
-#include "../include/mapa.h"
-#include "../include/pecman.h"
-
 // Para testar Primeiro compile: gcc -DTEST test_move.c ../src/mapa.c ../src/pecman.c unity.c -I../include -o test_move.exe
 //Depois rode: ./test_move.exe
 
