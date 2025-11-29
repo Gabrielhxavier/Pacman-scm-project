@@ -1,16 +1,13 @@
 #include "unity.h"
 #include "../include/mapa.h"
 #include "../include/pecman.h"
-
+#include <stdlib.h>
+#include <time.h>
 // Para testar Primeiro compile: gcc -DTEST test_fantasma.c ../src/mapa.c ../src/pecman.c unity.c -I../include -o test_fantasma.exe
 
 //Depois rode: ./test_fantasma.exe
 
-#include "unity.h"
-#include "../include/mapa.h"
-#include "../include/pecman.h"
-#include <stdlib.h>
-#include <time.h>
+
 
 MAPA m5;
 
