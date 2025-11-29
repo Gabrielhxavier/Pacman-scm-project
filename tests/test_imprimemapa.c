@@ -1,9 +1,4 @@
 #include "unity.h"
-#include "mapa.h"
-#include <stdio.h>
-
-
-#include "unity.h"
 #include "../include/mapa.h"
 #include "../include/pecman.h"  
 #include <stdlib.h>
