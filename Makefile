@@ -4,13 +4,13 @@
 
 CC = gcc
 
-# Flags para o JOGO (sem -DTEST!)
-CFLAGS = -Wall -Wextra -Iinclude -Itests
+# Flags normais
+CFLAGS = -Wall -Wextra -Iinclude
 
 # Flags APENAS para testes
-TESTFLAGS = $(CFLAGS) -DTEST
+TESTFLAGS = $(CFLAGS) -Itests -DTEST
 
-# Diretórios
+# Diretórios principais
 SRC_DIR      = src
 BUILD_DIR    = build
 TEST_DIR     = tests
@@ -31,7 +31,7 @@ all: $(TARGET)
 
 
 # =============================
-#   COMPILAÇÃO DO JOGO (SEM TESTE)
+#   COMPILAÇÃO DO JOGO
 # =============================
 
 $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
@@ -40,6 +40,7 @@ $(BUILD_DIR)/%.o: $(SRC_DIR)/%.c
 
 $(TARGET): $(OBJ)
 	$(CC) $(OBJ) -o $(TARGET)
+
 
 run: $(TARGET)
 	./$(TARGET)
@@ -52,9 +53,10 @@ run: $(TARGET)
 TEST_FILES = $(wildcard $(TEST_DIR)/test_*.c)
 TEST_BINARIES = $(TEST_FILES:$(TEST_DIR)/%.c=$(TEST_BUILD)/%)
 
-$(TEST_BUILD)/test_%: $(TEST_DIR)/test_%.c $(TEST_DIR)/unity.c $(SRC)
+$(TEST_BUILD)/test_%: $(TEST_DIR)/test_%.c $(TEST_DIR)/unity.c $(SRC_DIR)/mapa.c $(SRC_DIR)/pecman.c
 	mkdir -p $(TEST_BUILD)
 	$(CC) $(TESTFLAGS) $^ -o $@
+
 
 compila-tests: $(TEST_BINARIES)
 	@echo "✓ Todos os testes foram compilados em build/tests/"
@@ -71,8 +73,9 @@ test: compila-tests
 
 
 # =============================
-#   LIMPAR
+#   LIMPAR ARQUIVOS GERADOS
 # =============================
 
 clean:
-	rm -rf $(BUILD_DIR)/pacman $(BUILD_DIR)/*.o $(TEST_BUILD)
+	rm -rf $(BUILD_DIR)/*.o $(TARGET)
+	rm -rf $(TEST_BUILD)
