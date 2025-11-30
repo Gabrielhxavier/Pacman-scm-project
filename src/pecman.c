@@ -118,33 +118,137 @@ void move(char direcao){
     andanomapa(&m, &heroi.x, &heroi.y, &proximox, &proximoy, HEROI);
 
 }
+
+int gameon(){
+
+    system("clear || cls");
+
+    printf("=====================================\n");
+    printf("=               PECMAN              =\n");
+    printf("=====================================\n");
+    printf("=        Controles do jogo:         =\n");
+    printf("=  W - Mover para cima              =\n");
+    printf("=  A - Mover para esquerda          =\n");
+    printf("=  S - Mover para baixo             =\n");
+    printf("=  D - Mover para direita           =\n");
+    printf("=====================================\n");
+    printf("=  P - Pausar o jogo                =\n");
+    printf("=====================================\n");
+    printf("=      Pressione qualquer tecla     =\n");
+    printf("=         para iniciar o jogo       =\n");  
+    printf("=====================================\n");
+    getchar();
+    system("clear || cls");
+
+    return 0;
+}
+
+void pause(char direcao) {
+
+    system("clear || cls");
+    int gameover(void);
+    
+    if (direcao == 'p' || direcao == 'P') {  
+        
+        printf("=====================================\n");
+        printf("=           Jogo Pausado            =\n");
+        printf("=====================================\n");
+        printf("    Qualquer letra para continuar   =\n");
+        printf("=                ou                 =\n");  
+        printf("=            Q para SAIR            =\n");  
+        printf("=====================================\n");
+
+        char input;
+        scanf(" %c", &input);
+        
+        while (getchar() != '\n');
+
+        if (input == 'q' || input == 'Q') {
+            system("clear || cls");
+            gameover();
+            
+        }
+        
+        system("clear || cls");
+    }
+}
+
+int gameover(){
+
+    char retry = '\n';      
+    
+    printf("              ██████████             \n");
+    printf("             █          █            \n");
+    printf("            █   ██   ██  █           \n");
+    printf("            █   ██   ██  █           \n");
+    printf("             █          █            \n");
+    printf("              █  █  █  █             \n");
+    printf("              █  █  █  █             \n");
+    printf("                                     \n");
+    printf("=====================================\n");  
+    printf("=              GAME OVER            =\n");
+    printf("=====================================\n");
+    printf("=        R - Jogar novamente        =\n");
+    printf("=  Qualquer outra tecla para SAIR   =\n");
+    printf("=====================================\n");
+    
+    scanf(" %c", &retry);
+
+    if (retry == 'R' || retry == 'r') {
+        lemapa(&m);
+        return 1;
+    }
+        system("clear || cls");
+        printf("=====================================\n");  
+        printf("=            JOGO ENCERRADO         =\n");
+        printf("=====================================\n");
+        exit(0); 
+}
+
 #ifndef TEST
 int main() {
 
-    lemapa(&m);
+    int pagina = 0;
+    int loop = 1;
 
-    encontraheroi(&heroi, &m, HEROI);
+    while (loop){
+   
+        switch (pagina){
 
-    do {
-        limpatela();
-        imprimemapa(&m);                      // função para imprimir o mapa no loop
+            case 0:
+                gameon();
+                lemapa(&m);
+                encontraheroi(&heroi, &m, HEROI);
 
-        char direcao;                       // char que vai armazenar a mudança de direção do herói
+                do {
+                    limpatela();
+                    imprimemapa(&m);                      // função para imprimir o mapa no loop
 
-        scanf(" %c", &direcao); 
-        
-        move(direcao);
+                    char direcao;                       // char que vai armazenar a mudança de direção do herói
 
-        fantasma();
+                    scanf(" %c", &direcao); 
+            
+                    pause(direcao);
+                    move(direcao);
+                    fantasma();
 
-    } 
-    while(!acabou());
+                } 
+                while(!acabou());
+                liberamapa(&m);   
+            pagina = 1;
+            break;
 
-    
-    
+            case 1:
 
-    liberamapa(&m);   
+                if (gameover()) {
+                    pagina = 0; // Reinicia o jogo
+                    } else {
+                    exit(0); // Encerra o programa
+                    }
+            break;
 
+        }
+    }
     return 0;  
 }
 #endif
