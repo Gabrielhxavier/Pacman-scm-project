@@ -13,13 +13,21 @@ void setUp() {
     m1.colunas = 2;
 
     alocamapa(&m1);
+
+    // Inicializa corretamente as linhas como strings válidas
     m1.matriz[0][0] = 'A';
+    m1.matriz[0][1] = '.';
+    m1.matriz[0][2] = '\0';
+
+    m1.matriz[1][0] = '.';
     m1.matriz[1][1] = 'B';
+    m1.matriz[1][2] = '\0';
 
     m2.linhas = 2;
     m2.colunas = 2;
     alocamapa(&m2);
 }
+
 
 void tearDown() {
     liberamapa(&m1);
