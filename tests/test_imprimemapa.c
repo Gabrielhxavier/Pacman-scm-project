@@ -24,6 +24,7 @@ void tearDown() {
 }
 
 void test_imprimemapa_nao_crasha() {
+    limpatela();
     imprimemapa(&m8);
     TEST_PASS();
 }

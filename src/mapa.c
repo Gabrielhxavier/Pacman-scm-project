@@ -112,6 +112,10 @@ void alocamapa(MAPA* m){
     }
 }
 
+void limpatela() {
+    printf("\033[2J\033[3J\033[H");
+}
+
 void imprimemapa(MAPA* m){
     for (int i=0; i < m->linhas; i++){
         printf("%s", m->matriz[i]);
