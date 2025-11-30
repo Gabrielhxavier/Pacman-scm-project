@@ -24,6 +24,7 @@ typedef struct posicao POSICAO;
 void liberamapa();
 void lemapa();
 void alocamapa();
+void limpatela();
 void imprimemapa();
 int encontraheroi(POSICAO* p, MAPA* m, char c);
 int podeandarnomapa(MAPA* m, int x, int y, char personagem);
