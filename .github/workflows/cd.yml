@@ -14,6 +14,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Build Docker image
+        run: docker build -t pacman-ci -f .devcontainer/Dockerfile .
+
       - name: Build project
         run: |
           docker run --rm \
@@ -23,31 +26,32 @@ jobs:
           bash -c "
             echo 'Compilando projeto...';
             make;
-            cp pacman_scm /workspaces/;
           "
 
       - name: Create binary distribution
         run: |
           echo "Creating distribution packages..."
           mkdir -p dist
-          cp pacman_scm dist/
+          cp build/pacman dist/
           cp README.md LICENSE dist/
           
           # Pacote TAR.GZ (original)
-          tar -czf pacman_scm-${{ github.ref_name }}.tar.gz dist/
-          echo "TAR package created: pacman_scm-${{ github.ref_name }}.tar.gz"
+          tar -czf build/pacman-${{ github.ref_name }}.tar.gz dist/
+          echo "TAR package created: build/pacman-${{ github.ref_name }}.tar.gz"
           
           # Pacote ZIP (adicionado)
-          zip -r pacman_scm-${{ github.ref_name }}.zip dist/
-          echo "ZIP package created: pacman_scm-${{ github.ref_name }}.zip"
+          zip -r build/pacman-${{ github.ref_name }}.zip dist/
+          echo "ZIP package created: build/pacman-${{ github.ref_name }}.zip"
 
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
+          name: "Pacman Release ${{ github.ref_name }}"
           files: |
-            pacman_scm-${{ github.ref_name }}.tar.gz
-            pacman_scm-${{ github.ref_name }}.zip
+            build/pacman-${{ github.ref_name }}.tar.gz
+            build/pacman-${{ github.ref_name }}.zip
           draft: false
           prerelease: false
+          generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
