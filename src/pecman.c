@@ -126,6 +126,7 @@ int main() {
     encontraheroi(&heroi, &m, HEROI);
 
     do {
+        limpatela();
         imprimemapa(&m);                      // função para imprimir o mapa no loop
 
         char direcao;                       // char que vai armazenar a mudança de direção do herói

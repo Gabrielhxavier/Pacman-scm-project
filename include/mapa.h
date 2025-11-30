@@ -29,11 +29,13 @@ struct posicao
 
 typedef struct posicao POSICAO;
 
+
 void liberamapa(MAPA* m);
 void lemapa(MAPA* m);
 void alocamapa(MAPA* m);
 void imprimemapa(MAPA* m);
 void imprimeparte(char desenho[4][7], int parte);
+void limpatela();
 int encontraheroi(POSICAO* p, MAPA* m, char c);
 int podeandarnomapa(MAPA* m, int x, int y, char personagem);
 void andanomapa(MAPA* m, int* origemx, int* origemy, int* destinox, int* destinoy, char heroi);

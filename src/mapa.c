@@ -140,6 +140,7 @@ void alocamapa(MAPA* m){
     }
 }
 
+
 void imprimeparte(char desenho[4][7], int parte) {
 	printf("%s", desenho[parte]);
 }
@@ -171,4 +172,8 @@ void imprimemapa(MAPA* m) {
 		}
 
 	}
+}
+
+void limpatela() {
+    printf("\033[2J\033[3J\033[H");
 }
