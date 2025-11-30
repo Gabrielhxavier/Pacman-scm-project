@@ -34,7 +34,8 @@ jobs:
           echo "Creating distribution packages..."
           mkdir -p dist
           cp build/pacman dist/
-          cp README.md LICENSE dist/
+          cp README.md dist/
+          cp docs/changelog.md dist/
           
           # Pacote TAR.GZ (original)
           tar -czf build/pacman-${{ github.ref_name }}.tar.gz dist/
