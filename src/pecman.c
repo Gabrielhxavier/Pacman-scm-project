@@ -5,6 +5,7 @@
 #include <string.h>
 #include <time.h>
 
+int pontos = 0;
 
 MAPA m;
 
@@ -125,6 +126,9 @@ int main() {
 
     do {
         imprimemapa(&m);                      // função para imprimir o mapa no loop
+         
+        pontos++;
+        printf("PONTOS: %d\n", pontos);
 
         char direcao;                       // char que vai armazenar a mudança de direção do herói
 
@@ -138,7 +142,8 @@ int main() {
     while(!acabou());
 
     
-    
+    pontos = 0;
+
 
     liberamapa(&m);   
 
