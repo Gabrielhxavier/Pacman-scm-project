@@ -1,0 +1,59 @@
+name: CD - Pacman Workflow Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Build Docker image
+        run: docker build -t pacman-ci -f .devcontainer/Dockerfile .
+
+      - name: Build project
+        run: |
+          docker run --rm \
+          --user $(id -u):$(id -g) \
+          -v $(pwd):/workspaces \
+          -w /workspaces \
+          pacman-ci \
+          bash -c "
+            echo 'Compilando projeto...';
+            make;
+          "
+
+      - name: Create binary distribution
+        run: |
+          echo "Creating distribution packages..."
+          mkdir -p dist
+          cp build/pacman dist/
+          cp README.md dist/
+          cp docs/changelog.md dist/
+          
+          # Pacote TAR.GZ (original)
+          tar -czf build/pacman-${{ github.ref_name }}.tar.gz dist/
+          echo "TAR package created: build/pacman-${{ github.ref_name }}.tar.gz"
+          
+          # Pacote ZIP (adicionado)
+          zip -r build/pacman-${{ github.ref_name }}.zip dist/
+          echo "ZIP package created: build/pacman-${{ github.ref_name }}.zip"
+
+      - name: Create Release
+        uses: softprops/action-gh-release@v1
+        with:
+          name: "Pacman Release ${{ github.ref_name }}"
+          files: |
+            build/pacman-${{ github.ref_name }}.tar.gz
+            build/pacman-${{ github.ref_name }}.zip
+          draft: false
+          prerelease: false
+          generate_release_notes: true
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
