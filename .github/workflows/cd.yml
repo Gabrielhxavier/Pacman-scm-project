@@ -20,6 +20,7 @@ jobs:
       - name: Build project
         run: |
           docker run --rm \
+          -- user root  \
           -v $(pwd):/workspaces \
           -w /workspaces \
           pacman-ci \
