@@ -17,7 +17,8 @@ MAPA copia;
 int destinofantasma(int xatual, int yatual, int* xdestino, int* ydestino){
 
     int direcaofantasma;
-    direcaofantasma  = rand() % 4;
+    srand(time(0));
+    
 
     int opcoes[4][2] = {{xatual, yatual+1},
                         {xatual+1, yatual},
@@ -25,9 +26,10 @@ int destinofantasma(int xatual, int yatual, int* xdestino, int* ydestino){
                         {xatual-1, yatual}
                         };
 
-    srand(time(0));
+    
     for (int i = 0; i < 10; i++)
     {
+        direcaofantasma  = rand() % 4;
         if (podeandarnomapa(&m,  opcoes[direcaofantasma][0], opcoes[direcaofantasma][1], FANTASMA)){
             *xdestino = opcoes[direcaofantasma][0];
             *ydestino = opcoes[direcaofantasma][1];
@@ -125,6 +127,7 @@ int main() {
     encontraheroi(&heroi, &m, HEROI);
 
     do {
+        limpatela();
         imprimemapa(&m);                      // função para imprimir o mapa no loop
          
         pontos++;
