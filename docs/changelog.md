@@ -14,6 +14,20 @@ Todas as mudanças notáveis deste projeto serão documentadas neste arquivo.
 `[Versão] – YYYY-MM-DD`
 
 ---
+## [v1.3.2] - 2025-11
+
+### Added
+- Implementação do sistema de pontuação, incluindo:
+  - Variável de armazenamento de pontos.
+  - Incremento integrado ao fluxo de movimentação.
+  - Atualizações no módulo de mapa para permitir contagem de itens coletados.
+- Testes manuais de compilação e execução demonstrando o correto funcionamento da nova lógica.
+
+### Changed
+- Ajustes na lógica de movimentação e interação com o mapa para suportar atualização da pontuação.
+- Organização e revisão do fluxo principal em `pecman.c` para integração estável do novo recurso.
+
+---
 
 ## [1.2.2] - 2025-11
 ### Added
