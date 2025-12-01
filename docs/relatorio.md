@@ -223,7 +223,8 @@ pacman-scm-project/
 - Preencher Depois
 
 #### Luiz
-- Preencher Depois
+- Durante o projeto pude aprender melhor a utilizar as ferramentas de gerenciamento de configuração de software, assim como a estudar melhor os testes e o código do projeto. Através do projeto pude perceber o impacto do uso delas e sua importância no resultado do projeto, evidenciando que não pode ignorar os passos e etapas do projeto. No projeto todos conseguiram ter a possibilidade de contribuir, dando suas opiniões e trazendo experiências prévias com as ferramentas. Devido a uma forte interação e sinergia presente na equipe conseguimos superar os desafios que apareceram ao longo do desenvolvimento do projeto. Para projetos futuros desejo aplicar o conhecimento aprendido como também assumir outras posições como por exemplo: do responsável de CI/CD, entre outras.
+
 
 #### Andrei
 - Preencher Depois
