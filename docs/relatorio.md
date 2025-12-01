@@ -227,7 +227,7 @@ pacman-scm-project/
 
 
 #### Andrei
-- Preencher Depois
+- Durante o desenvolvimento deste projeto, aprendi a importância de uma boa organização de branches e de práticas claras de controle de versão usando Git e GitHub. Experimentei na prática como o trabalho colaborativo exige comunicação constante, padronização de commits e revisão cuidadosa de Pull Requests para evitar conflitos. Também compreendi melhor o fluxo de gerenciamento de configuração, incluindo versionamento, controle de mudanças, criação de releases e documentação do projeto. No geral, esse projeto reforçou a necessidade de disciplina, cooperação e boas práticas para manter um código consistente e de fácil manutenção.
 
 #### Bruno
 - O meu uso anterior de Git se resumia a clonagem de repositórios públicos com finalidade estritamente de execução. Esse projeto possibilitou materializar os conhecimentos obtidos em aula, reforçando e os fixando como uma parte das minhas habilidades. Assim, foi uma etapa muito proveitosa do curso para mim, já que a partir de um nível de desconhecimento, agora possuo um nível razoável.
