@@ -18,9 +18,9 @@ Este projeto é uma implementação do clássico jogo Pacman em C. O objetivo é
 - [x] Interface intuitiva para o jogo
 - [x] Game Over / Game On
 - [x] Bug de travamento do fantasma em posição inválida
+- [x] Sistema de Pontuação
 
 ### 🏆 Em Desenvolvimento
-- [ ] Sistema de Pontuação
 - [ ] Sistema de Vidas (Pacman perde vida ao encostar em Fantasma)
 
 ### 🕹️ Melhoria da Jogabilidade (Futuro)
