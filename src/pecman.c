@@ -7,7 +7,7 @@
 
 
 MAPA m;
-
+int pontos = 0;
 
 
 POSICAO heroi;
@@ -223,6 +223,8 @@ int main() {
                 do {
                     limpatela();
                     imprimemapa(&m);                      // função para imprimir o mapa no loop
+                    pontos++;
+                    printf("PONTOS: %d\n", pontos);
 
                     char direcao;                       // char que vai armazenar a mudança de direção do herói
 
@@ -234,7 +236,9 @@ int main() {
 
                 } 
                 while(!acabou());
-                liberamapa(&m);   
+                liberamapa(&m);
+                pontos = 0;
+
             pagina = 1;
             break;
 

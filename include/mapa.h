@@ -34,6 +34,8 @@ void liberamapa(MAPA* m);
 void lemapa(MAPA* m);
 void alocamapa(MAPA* m);
 void imprimemapa(MAPA* m);
+
+
 void imprimeparte(char desenho[4][7], int parte);
 void limpatela();
 int encontraheroi(POSICAO* p, MAPA* m, char c);
