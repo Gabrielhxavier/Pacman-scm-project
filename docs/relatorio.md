@@ -1,5 +1,6 @@
 # Relatório de SCM - Pacman-scm-project
 
+
 ## Estratégia de Branching Utilizada
 
 O projeto adota o modelo Git Flow para gerenciamento de branches:
